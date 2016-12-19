@@ -1,5 +1,6 @@
 var express = require("express");
 var mongoose = require('mongoose');
+var path = require('path');
 var app = express();
 
 
@@ -14,8 +15,6 @@ var entrySchema = new mongoose.Schema({
 
 var EntryModel = mongoose.model('EntryModel', entrySchema);
 /////////////////////////////////////////////////////////////////////////////////////////
-
-app.use(express.static('index.html'));
 
 
 app.get('/', function(req, res){
@@ -44,6 +43,8 @@ app.get('/', function(req, res){
 		 console.log("Entries saved: " + entrys);
 	 });
 	 /////////////////////////////////////////////////////////////////////////////////////////
+
+	 res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 
