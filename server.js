@@ -15,7 +15,7 @@ var entrySchema = new mongoose.Schema({
 var EntryModel = mongoose.model('EntryModel', entrySchema);
 /////////////////////////////////////////////////////////////////////////////////////////
 
-
+app.use(express.static('index.html'));
 
 
 app.get('/', function(req, res){
@@ -25,14 +25,6 @@ app.get('/', function(req, res){
     var software = req.headers['user-agent'];
 
     var os = software.slice(software.indexOf("(")+1, software.indexOf(")"));
-
-    var json = {
-        "ipAddress": ip,
-        "language": lang,
-        "system": os
-    }
-
-    res.send(json);
 	 /////////////////////////////////////////////////////////////////////////////////////////
 
 
